@@ -7,9 +7,9 @@ import "@aragon/os/contracts/factory/EVMScriptRegistryFactory.sol";
 
 import "@aragon/minime/contracts/MiniMeToken.sol";
 
-import "@aragon/apps-agreement/contracts/test/mocks/AgreementMock.sol";
-import "@aragon/apps-agreement/contracts/test/mocks/disputable/ArbitratorMock.sol";
-import "@aragon/apps-agreement/contracts/test/mocks/disputable/AragonAppFeesCashierMock.sol";
+import "@1hive/apps-agreement/contracts/test/mocks/AgreementMock.sol";
+import "@1hive/apps-agreement/contracts/test/mocks/disputable/ArbitratorMock.sol";
+import "@1hive/apps-agreement/contracts/test/mocks/disputable/AragonAppFeesCashierMock.sol";
 
 import "@aragon/contract-helpers-test/contracts/0.4/misc/ExecutionTarget.sol";
 

@@ -4,6 +4,7 @@ usePlugin("@nomiclabs/buidler-ganache")
 usePlugin('@nomiclabs/buidler-truffle5')
 usePlugin('buidler-gas-reporter')
 usePlugin('solidity-coverage')
+usePlugin('@aragon/buidler-aragon')
 
 const ACCOUNTS = (process.env.ETH_KEYS ? process.env.ETH_KEYS.split(',') : [])
   .map(key => key.trim())
@@ -24,6 +25,12 @@ module.exports = {
     // and expose it at port 8555.
     coverage: {
       url: 'http://localhost:8555',
+    },
+    xdai: {
+      url: 'https://dai.poa.network',
+      accounts: ACCOUNTS,
+      gasPrice: 1000000000,
+      gas: 12000000,
     },
     // Mainnet network configured with Aragon node.
     mainnet: {
