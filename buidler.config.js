@@ -32,6 +32,16 @@ module.exports = {
       gasPrice: 1000000000,
       gas: 12000000,
     },
+    arbtest: {
+      url: 'https://rinkeby.arbitrum.io/rpc',
+      accounts: [process.env.ETH_KEY],
+      gasPrice: 0,
+    },
+    arbitrum: {
+      url: 'https://arb1.arbitrum.io/rpc',
+      accounts: [process.env.ETH_KEY],
+      gasPrice: 0,
+    },
     // Mainnet network configured with Aragon node.
     mainnet: {
       url: 'https://mainnet.eth.aragon.network',
@@ -54,7 +64,7 @@ module.exports = {
     version: '0.4.24',
     optimizer: {
       enabled: true,
-      runs: 1000,
+      runs: 20000, // Set to 1000 for bytesize restricted envs
     },
   },
   // The gas reporter plugin do not properly handle the buidlerevm
