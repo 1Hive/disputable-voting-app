@@ -1,11 +1,9 @@
 # Disputable Voting
 
-#### 🛠️ Project stage: development
+#### 🛠️ Project stage: complete
 
-The DisputableVoting app is still in development phase and aspects of the mechanism are still being designed and implemented.
+The DisputableVoting app's functionality is not expected to change in the near future.
 
-A frontend for the Aragon client has been started in [`app/`](app/) but is not yet production-ready.
+#### ⚠️ Security review status: audited
 
-#### ⚠️ Security review status: pre-audit
-
-The code in this sub-repo is under heavy development and hasn't undergone a professional security review yet, therefore we cannot recommend using any of the code at the moment.
+The code in this repo has undergone a professional security review.
