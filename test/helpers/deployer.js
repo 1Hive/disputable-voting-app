@@ -1,4 +1,4 @@
-const agreementDeployer = require('@aragon/apps-agreement/test/helpers/utils/deployer')(web3, artifacts)
+const agreementDeployer = require('@1hive/apps-agreement/test/helpers/utils/deployer')(web3, artifacts)
 const { ANY_ENTITY, getInstalledApp } = require('@aragon/contract-helpers-test/src/aragon-os')
 const { ZERO_ADDRESS, NOW, ONE_DAY, pct16, getEventArgument } = require('@aragon/contract-helpers-test')
 

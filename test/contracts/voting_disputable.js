@@ -3,7 +3,7 @@ const { VOTING_ERRORS } = require('../helpers/errors')
 const { VOTE_STATUS, VOTER_STATE, createVote, voteScript, getVoteState } = require('../helpers/voting')
 
 const { toAscii, utf8ToHex } = require('web3-utils')
-const { RULINGS } = require('@aragon/apps-agreement/test/helpers/utils/enums')
+const { RULINGS } = require('@1hive/apps-agreement/test/helpers/utils/enums')
 const { ONE_DAY, pct16, bigExp, bn } = require('@aragon/contract-helpers-test')
 const { assertBn, assertRevert, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
 
