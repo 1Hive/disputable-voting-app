@@ -258,7 +258,7 @@ contract DisputableVoting is IForwarderWithContext, DisputableAragonApp {
     * @param _context Additional context for the vote, also used as the disputable action's context on the linked Agreement
     * @return Identification number of the newly created vote
     */
-    function newVote(bytes _executionScript, bytes _context) external auth(CREATE_VOTES_ROLE) returns (uint256) {
+    function newVote(bytes _executionScript, bytes _context) external authP(CREATE_VOTES_ROLE, arr(msg.sender)) returns (uint256) {
         return _newVote(_executionScript, _context);
     }
 
