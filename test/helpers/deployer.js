@@ -163,7 +163,7 @@ class VotingDeployer {
     return token
   }
 
-  async setOracle(address) {
+  async grantOraclePermissionToAddress(address) {
     const ACLOracleMock = this._getContract('ACLOracleMock')
     const oracle = await ACLOracleMock.new(address)
     await this.acl.grantPermissionP(ANY_ENTITY, this.voting.address, await this.voting.CREATE_VOTES_ROLE(), [
