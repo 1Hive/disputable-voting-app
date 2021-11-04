@@ -133,7 +133,7 @@ module.exports = {
       accounts: accounts("mumbai"),
       ensRegistry: "0xB1576a9bE5EC445368740161174f3Dd1034fF8be",
     },
-    arbitrum2: {
+    arbitrum: {
       url: node_url("arbitrum"),
       accounts: accounts("arbitrum"),
       ensRegistry: "0xB1576a9bE5EC445368740161174f3Dd1034fF8be",
@@ -143,12 +143,11 @@ module.exports = {
       accounts: accounts("arbtest"),
       ensRegistry: "0x73ddD4B38982aB515daCf43289B41706f9A39199",
     },
-    arbitrum: {
+    frame: {
       url: "http://localhost:1248",
       httpHeaders: { origin: "hardhat" },
       timeout: 0,
       gas: 0,
-      ensRegistry: "0xB1576a9bE5EC445368740161174f3Dd1034fF8be",
     },
   },
   ipfs: {
