@@ -1,4 +1,3 @@
-const { getArtifacts, getWeb3 } = require('@aragon/contract-helpers-test/src/config')
 const { ZERO_ADDRESS, bn, decodeEvents } = require('@aragon/contract-helpers-test')
 const { EMPTY_CALLS_SCRIPT, encodeCallScript } = require('@aragon/contract-helpers-test/src/aragon-os')
 
@@ -29,7 +28,6 @@ const getVoteSetting = async (voting, id) => {
 }
 
 const voteScript = async (actions = 1) => {
-  const artifacts = getArtifacts()
   const ExecutionTarget = artifacts.require('ExecutionTarget')
   const executionTarget = await ExecutionTarget.new()
   const action = { to: executionTarget.address, calldata: executionTarget.contract.methods.execute().encodeABI() }
@@ -39,14 +37,12 @@ const voteScript = async (actions = 1) => {
 
 const createVote = async ({ voting, script = undefined, voteContext = '0xabcdef', from = undefined }) => {
   if (!from) {
-    const web3 = getWeb3()
     from = (await web3.eth.getAccounts())[0]
   }
 
   if (script === undefined) script = (await voteScript(1)).script
   if (!script) script = EMPTY_CALLS_SCRIPT
 
-  const artifacts = getArtifacts()
   const agreementAddress = await voting.getAgreement()
   if (agreementAddress !== ZERO_ADDRESS) {
     const Agreement = artifacts.require('Agreement')
