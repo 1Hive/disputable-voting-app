@@ -1,4 +1,4 @@
-# Disputable Voting
+# Disputable Voting <a href="https://1hive.org/"><img align="right" src=".github/assets/1hive.svg" height="80px" /></a>
 
 #### 🛠️ Project stage: complete
 
