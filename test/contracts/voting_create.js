@@ -1,10 +1,11 @@
 const deployer = require('../helpers/deployer')(web3, artifacts)
 const { ARAGON_OS_ERRORS, VOTING_ERRORS } = require('../helpers/errors')
 const { createVote, voteScript, getVoteState } = require('../helpers/voting')
+const { assertRevert } = require('../helpers/assertThrow')
 
 const { EMPTY_CALLS_SCRIPT } = require('@aragon/contract-helpers-test/src/aragon-os')
 const { ONE_DAY, bigExp, pct16, getEventArgument } = require('@aragon/contract-helpers-test')
-const { assertBn, assertRevert, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
+const { assertBn, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
 
 contract('Voting', ([_, owner, holder1, holder2, holder20, holder29, holder51]) => {
   let voting, token

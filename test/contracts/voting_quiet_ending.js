@@ -1,9 +1,10 @@
 const deployer = require('../helpers/deployer')(web3, artifacts)
 const { VOTING_ERRORS } = require('../helpers/errors')
 const { VOTER_STATE, createVote, voteScript, getVoteState } = require('../helpers/voting')
+const { assertRevert } = require('../helpers/assertThrow')
 
 const { NOW, ONE_DAY, pct16, bigExp } = require('@aragon/contract-helpers-test')
-const { assertRevert, assertBn, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
+const { assertBn, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
 
 contract('Voting', ([_, owner, holder10, holder20, holder30, holder40, holder50]) => {
   let voting, agreement, token

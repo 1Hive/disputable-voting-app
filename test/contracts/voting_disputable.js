@@ -1,11 +1,12 @@
 const deployer = require('../helpers/deployer')(web3, artifacts)
 const { VOTING_ERRORS } = require('../helpers/errors')
 const { VOTE_STATUS, VOTER_STATE, createVote, voteScript, getVoteState } = require('../helpers/voting')
+const { assertRevert } = require('../helpers/assertThrow')
 
 const { toAscii, utf8ToHex } = require('web3-utils')
 const { RULINGS } = require('@1hive/apps-agreement/test/helpers/utils/enums')
 const { ONE_DAY, pct16, bigExp, bn } = require('@aragon/contract-helpers-test')
-const { assertBn, assertRevert, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
+const { assertBn, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
 
 contract('Voting disputable', ([_, owner, representative, voter10, voter20, voter29, voter40]) => {
   let voting, token, agreement, voteId, actionId, executionTarget, script
