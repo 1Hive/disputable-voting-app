@@ -11,6 +11,9 @@ const ACCOUNTS = (process.env.ETH_KEYS ? process.env.ETH_KEYS.split(',') : [])
 
 module.exports = {
   networks: {
+    buidlerevm: {
+      allowUnlimitedContractSize: true,
+    },
     // Local development network using ganache. You can set any of the
     // Ganache's options. All of them are supported, with the exception
     // of accounts.
@@ -34,12 +37,12 @@ module.exports = {
     },
     arbtest: {
       url: 'https://rinkeby.arbitrum.io/rpc',
-      accounts: [process.env.ETH_KEY],
+      accounts: ACCOUNTS,
       gasPrice: 0,
     },
     arbitrum: {
       url: 'https://arb1.arbitrum.io/rpc',
-      accounts: [process.env.ETH_KEY],
+      accounts: ACCOUNTS,
       gasPrice: 0,
     },
     // Mainnet network configured with Aragon node.

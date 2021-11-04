@@ -36,7 +36,9 @@
     {
       "name": "Create new votes",
       "id": "CREATE_VOTES_ROLE",
-      "params": []
+      "params": [
+        "Sender"
+      ]
     },
     {
       "name": "Challenge votes",

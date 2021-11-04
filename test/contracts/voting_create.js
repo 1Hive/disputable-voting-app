@@ -6,7 +6,7 @@ const { EMPTY_CALLS_SCRIPT } = require('@aragon/contract-helpers-test/src/aragon
 const { ONE_DAY, bigExp, pct16, getEventArgument } = require('@aragon/contract-helpers-test')
 const { assertBn, assertRevert, assertEvent, assertAmountOfEvents } = require('@aragon/contract-helpers-test/src/asserts')
 
-contract('Voting', ([_, owner, holder1, holder2, holder20, holder29, holder51, agreement]) => {
+contract('Voting', ([_, owner, holder1, holder2, holder20, holder29, holder51]) => {
   let voting, token
 
   const CONTEXT = '0xabcdef'
@@ -94,6 +94,21 @@ contract('Voting', ([_, owner, holder1, holder2, holder20, holder29, holder51, a
 
           it('fails getting a vote out of bounds', async () => {
             await assertRevert(voting.getVote(voteId + 1), VOTING_ERRORS.VOTING_NO_VOTE)
+          })
+        })
+
+        context('is behind an ACL oracle', () => {
+          beforeEach(async () => {
+            await deployer.grantOraclePermissionToAddress(holder1)
+            await deployer.token.generateTokens(holder51, bigExp(51, 18))
+          })
+
+          it('should create a vote when allowed', async () => {
+            await createVote({ voting, script: false, from: holder1 })
+          })
+
+          it('should revert when not allowed', async () => {
+            await assertRevert(createVote({ voting, script: false, from: holder2 }), ARAGON_OS_ERRORS.APP_AUTH_FAILED)
           })
         })
 

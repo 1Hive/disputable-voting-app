@@ -1,5 +1,5 @@
-const agreementDeployer = require('@aragon/apps-agreement/test/helpers/utils/deployer')(web3, artifacts)
-const { ANY_ENTITY, getInstalledApp } = require('@aragon/contract-helpers-test/src/aragon-os')
+const agreementDeployer = require('@1hive/apps-agreement/test/helpers/utils/deployer')(web3, artifacts)
+const { ANY_ENTITY, getInstalledApp, createEqOraclePermissionParam } = require('@aragon/contract-helpers-test/src/aragon-os')
 const { ZERO_ADDRESS, NOW, ONE_DAY, pct16, getEventArgument } = require('@aragon/contract-helpers-test')
 
 const DEFAULT_VOTING_INITIALIZATION_PARAMS = {
@@ -161,6 +161,14 @@ class VotingDeployer {
     const token = await MiniMeToken.new(ZERO_ADDRESS, ZERO_ADDRESS, 0, name, decimals, symbol, true)
     this.previousDeploy = { ...this.previousDeploy, token }
     return token
+  }
+
+  async grantOraclePermissionToAddress(address) {
+    const ACLOracleMock = this._getContract('ACLOracleMock')
+    const oracle = await ACLOracleMock.new(address)
+    await this.acl.grantPermissionP(ANY_ENTITY, this.voting.address, await this.voting.CREATE_VOTES_ROLE(), [
+      createEqOraclePermissionParam(oracle.address)
+    ], { from: this.owner })
   }
 
   async _createPermissions(app, permissions, to, manager = to) {
