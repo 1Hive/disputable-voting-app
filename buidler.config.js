@@ -45,6 +45,16 @@ module.exports = {
       accounts: ACCOUNTS,
       gasPrice: 0,
     },
+    mumbai: {
+      url: 'https://rpc-mumbai.maticvigil.com/v1/21b0f704769b8850d4e5b7a3adb9d436230ce014',
+      accounts: [process.env.ETH_KEY],
+      gasPrice: 1000000000
+    },
+    polygon: {
+      url: 'https://rpc-mainnet.maticvigil.com/v1/21b0f704769b8850d4e5b7a3adb9d436230ce014',
+      accounts: [process.env.ETH_KEY],
+      gasPrice: 60000000000
+    },
     // Mainnet network configured with Aragon node.
     mainnet: {
       url: 'https://mainnet.eth.aragon.network',
@@ -67,7 +77,7 @@ module.exports = {
     version: '0.4.24',
     optimizer: {
       enabled: true,
-      runs: 20000, // Set to 1000 for bytesize restricted envs
+      runs: 1000, // Set to 1000 for bytesize restricted envs
     },
   },
   // The gas reporter plugin do not properly handle the buidlerevm
