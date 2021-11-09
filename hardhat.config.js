@@ -8,7 +8,7 @@ require("hardhat-deploy");
 require("hardhat-gas-reporter");
 require("solidity-coverage");
 
-const { node_url, accounts } = require("./utils/network");
+const { node_url, accounts, account } = require("./utils/network");
 
 process.removeAllListeners("warning");
 module.exports = {
@@ -110,7 +110,7 @@ module.exports = {
     },
     rinkeby: {
       url: node_url("rinkeby"),
-      accounts: accounts("rinkeby"),
+      accounts: account("rinkeby"),
       ensRegistry: "0x98Df287B6C145399Aaa709692c8D308357bC085D",
     },
     ropsten: {
@@ -120,7 +120,7 @@ module.exports = {
     },
     xdai: {
       url: node_url("xdai"),
-      accounts: accounts("xdai"),
+      accounts: account("xdai"),
       ensRegistry: "0xaafca6b0c89521752e559650206d7c925fd0e530",
     },
     polygon: {
@@ -130,8 +130,8 @@ module.exports = {
     },
     mumbai: {
       url: node_url("mumbai"),
-      accounts: accounts("mumbai"),
-      ensRegistry: "0xB1576a9bE5EC445368740161174f3Dd1034fF8be",
+      accounts: account("mumbai"),
+      ensRegistry: "0xB1576a9bE5EC445368740161174f3Dd1034fF8be"
     },
     arbitrum: {
       url: node_url("arbitrum"),
