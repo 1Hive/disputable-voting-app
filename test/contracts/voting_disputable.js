@@ -169,7 +169,7 @@ contract('Voting disputable', ([_, owner, representative, voter10, voter20, vote
     context('when allowed', () => {
       beforeEach('dispute and allow vote', async () => {
         await agreement.dispute({ actionId })
-        await agreement.executeRuling({ actionId, ruling: RULINGS.IN_FAVOR_OF_SUBMITTER })
+        await agreement.resolveRuling({ actionId, ruling: RULINGS.IN_FAVOR_OF_SUBMITTER })
       })
 
       it('resumes the vote', async () => {
@@ -348,7 +348,7 @@ contract('Voting disputable', ([_, owner, representative, voter10, voter20, vote
     context('when rejected', () => {
       beforeEach('dispute and reject vote', async () => {
         await agreement.dispute({ actionId })
-        await agreement.executeRuling({ actionId, ruling: RULINGS.IN_FAVOR_OF_CHALLENGER })
+        await agreement.resolveRuling({ actionId, ruling: RULINGS.IN_FAVOR_OF_CHALLENGER })
       })
 
       itCancelsTheVote()
@@ -357,7 +357,7 @@ contract('Voting disputable', ([_, owner, representative, voter10, voter20, vote
     context('when voided', () => {
       beforeEach('dispute and void vote', async () => {
         await agreement.dispute({ actionId })
-        await agreement.executeRuling({ actionId, ruling: RULINGS.REFUSED })
+        await agreement.resolveRuling({ actionId, ruling: RULINGS.REFUSED })
       })
 
       itCancelsTheVote()
